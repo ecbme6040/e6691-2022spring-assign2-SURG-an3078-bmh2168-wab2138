@@ -20,7 +20,7 @@ def process_vid(file):
         path = os.path.join(root, title)
         os.mkdir(path)
         while success:
-            cv2.imwrite(path+"/frame%d.jpg" % count, image)     # save frame as JPEG file      
+            cv2.imwrite(path+"/images/frame%d.jpg" % count, image)     # save frame as JPEG file      
             success,image = vidcap.read()
             if (count%500==499):
                 print(title, success,count*100/length)
