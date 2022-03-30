@@ -23,6 +23,7 @@ def process_vid(file):
         while success:
             cv2.imwrite(path+"/frame%d.jpg" % count, image)     # save frame as JPEG file      
             success,image = vidcap.read()
+            count+=1
         if count!=length or length==0:
             print('pb with', title)
             return 'ERROR '+title
