@@ -5,9 +5,9 @@ import os
 
 
 def process_vid(file):
-    
+    root="./e6691-bucket-videos/surgery.videos.hernia/"
     path = os.fsdecode(file)
-    path = os.path.join('./data', path)
+    path = os.path.join(root, path)
     if path.endswith('.mp4') :               
         title=os.path.basename(path)[:-4]
         vidcap = cv2.VideoCapture(path)
@@ -17,7 +17,7 @@ def process_vid(file):
         count = 0
   
         # Directory
-        path = os.path.join('./data', title)
+        path = os.path.join(root, title)
         os.mkdir(path)
         while success:
             cv2.imwrite(path+"/frame%d.jpg" % count, image)     # save frame as JPEG file      
