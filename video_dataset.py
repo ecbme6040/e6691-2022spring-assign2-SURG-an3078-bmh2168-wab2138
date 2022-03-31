@@ -10,43 +10,33 @@ from PIL import Image
 
 class ImagesDataset(Dataset):
     
-    def __init__(self,frames2label):
+    def __init__(self):
         # Initialize data, download, etc.
         # read with numpy or pandas
         
         #read all images paths,label dic
+        with open('./pickle/frames2label.p', 'rb') as fp:
+            frames2label = pickle.load(fp)
         self.root='./e6691-bucket-images/'
         self.frames2label=frames2label
         self.n_samples = len(self.frames2label)# a remplir
         self.index2data=[]
+        self.convert_tensor = transforms.Compose([transforms.PILToTensor()])
         for frame in self.frames2label:
             self.index2data.append(frame)
-        '''
-        xy = np.loadtxt('./data/wine/wine.csv', delimiter=',', dtype=np.float32, skiprows=1)
-        
-        self.n_samples = xy.shape[0]
-        # here the first column is the class label, the rest are the features
-        self.x_data = torch.from_numpy(xy[:, 1:]) # size [n_samples, n_features]
-        self.y_data = torch.from_numpy(xy[:, [0]]) # size [n_samples, 1]
-        '''
+       
 
     # support indexing such that dataset[i] can be used to get i-th sample
     def __getitem__(self, index):
-        return read_image(self.index2data[index]), self.frames2label[self.index2data[index]]
-    def read_image(self,file):
-        path=os.path.join(self.root,file)
-        img = Image.open(path)
-        convert_tensor = transforms.Compose([transforms.PILToTensor()])
-        return torch.Tensor.float(convert_tensor(img))
+        path=os.path.join(self.root,self.index2data[index])
+        return torch.Tensor.float(self.convert_tensor(Image.open(path))), self.frames2label[self.index2data[index]]
+   
     # we can call len(dataset) to return the size
     def __len__(self):
         return self.n_samples
 
-
 # create dataset
-with open('./pickle/frames2label.p', 'rb') as fp:
-    frames2label = pickle.load(fp)
-dataset = ImagesDataset(frames2label)
+dataset = ImagesDataset()
 
 # +
 #Test code
