@@ -40,21 +40,17 @@ train_set, val_set = torch.utils.data.random_split(dataset, [l-int(val_split*l),
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
-bs=64
+bs=128
+dataset_sizes = {'train':l-int(val_split*l),'val': int(val_split*l)}
 train_loader = DataLoader(dataset=train_set,
-                          batch_size=64,
+                          batch_size=bs,
                           shuffle=True,
                           num_workers=4)
 val_loader = DataLoader(dataset=val_set,
-                          batch_size=64,
+                          batch_size=bs,
                           shuffle=True,
                           num_workers=4)
 dataloaders={'train':train_loader,'val':val_loader}
-
-for i  in train_loader:
-    print(i[1])
-    break
-len(dataloaders['train'])
 
 
 def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
@@ -106,7 +102,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
                     running_loss += loss.item() * inputs.size(0)
                     running_corrects += torch.sum(preds == labels.data)
                     batches+=1                      
-                    tepoch.set_postfix(loss=running_loss/(batches*bs), accuracy=100. * running_corrects/(batches*bs))
+                    tepoch.set_postfix(loss=running_loss/(batches*bs), accuracy=100. * running_corrects.item()/(batches*bs))
 
             if phase == 'train':
                 scheduler.step()
@@ -147,13 +143,16 @@ criterion = nn.CrossEntropyLoss()
 optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
 
 # Decay LR by a factor of 0.1 every 7 epochs
-exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=2, gamma=0.1)
 # -
 
 model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,
-                       num_epochs=1)
+                       num_epochs=4)
 
+torch.save(model_ft.state_dict(), './models/resnet18.pt')
 
+from torchsummary import summary
+summary(model_ft, (3, 224, 224))
 
 
 
