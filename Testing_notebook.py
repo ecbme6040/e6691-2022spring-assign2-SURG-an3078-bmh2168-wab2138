@@ -151,6 +151,10 @@ model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,
 
 torch.save(model_ft.state_dict(), './models/resnet18.pt')
 
+# +
+# #!gsutil cp -r ./models gs://e6691-bucket-models
+# -
+
 from torchsummary import summary
 summary(model_ft, (3, 224, 224))
 
