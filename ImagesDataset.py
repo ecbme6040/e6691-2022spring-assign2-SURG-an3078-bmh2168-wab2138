@@ -1,4 +1,3 @@
-# +
 import torch
 import torchvision
 from torchvision import transforms
@@ -6,11 +5,8 @@ from torch.utils.data import Dataset, DataLoader
 import numpy as np
 import pickle
 import os
-
 from PIL import Image
 
-
-# -
 
 class ImagesDataset(Dataset):
     
@@ -37,9 +33,7 @@ class ImagesDataset(Dataset):
     # support indexing such that dataset[i] can be used to get i-th sample
     def __getitem__(self, index):
         path=os.path.join(self.ROOT,self.index2data[index])
-        return torch.Tensor.float(self.convert_tensor(Image.open(path))), torch.tensor(self.frames2label[self.index2data[index]])
-
-        #return torch.Tensor.float(self.convert_tensor(Image.open(path))), torch.nn.functional.one_hot(torch.tensor(self.frames2label[self.index2data[index]],dtype=torch.long), num_classes=17)
+        return torch.Tensor.float(self.convert_tensor(Image.open(path))), torch.nn.functional.one_hot(self.frames2label[self.index2data[index]], num_classes=17)
    
     # we can call len(dataset) to return the size
     def __len__(self):
