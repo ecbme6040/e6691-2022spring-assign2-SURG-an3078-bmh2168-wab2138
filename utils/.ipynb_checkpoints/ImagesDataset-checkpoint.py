@@ -14,17 +14,27 @@ from PIL import Image
 
 class ImagesDataset(Dataset):
     
-    def __init__(self, transform=None):
+    def __init__(self, transform=None,train=True):
         # Initialize data, download, etc.
         # read with numpy or pandas
         
         #read all images paths,label dic
         with open('./pickle/frames2label.p', 'rb') as fp:
             frames2label = pickle.load(fp)
-            
-            
+        self.train_dic={}
+        self.val_dic={}
+        self.l=[45, 33, 8, 16, 60, 28, 30, 5, 67, 25, 46, 52, 69, 17, 47, 26, 24, 18, 66, 19]
+        for k in frames2label:
+            if not int(k[23:k.index('/')]) in self.l:
+                self.train_dic[k]=frames2label[k]
+            else:
+                self.val_dic[k]=frames2label[k]
+                
+                
         self.ROOT='./e6691-bucket-images/'
-        self.frames2label=frames2label
+        self.frames2label=self.train_dic
+        if not train:
+            self.frames2label=self.val_dic
         self.n_samples = len(self.frames2label)
         self.index2data=[]
         self.convert_tensor = transforms.Compose([transforms.PILToTensor()])
