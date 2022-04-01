@@ -14,7 +14,7 @@ from PIL import Image
 
 class ImagesDataset(Dataset):
     
-    def __init__(self):
+    def __init__(self, transform=None):
         # Initialize data, download, etc.
         # read with numpy or pandas
         
@@ -32,11 +32,13 @@ class ImagesDataset(Dataset):
         
         for frame in self.frames2label:
             self.index2data.append(frame)
-       
+        self.transform = transform
 
     # support indexing such that dataset[i] can be used to get i-th sample
     def __getitem__(self, index):
         path=os.path.join(self.ROOT,self.index2data[index])
+        if self.transform:
+            self.transform(torch.Tensor.float(self.convert_tensor(Image.open(path)))),torch.tensor(self.frames2label[self.index2data[index]])
         return torch.Tensor.float(self.convert_tensor(Image.open(path))), torch.tensor(self.frames2label[self.index2data[index]])
 
         #return torch.Tensor.float(self.convert_tensor(Image.open(path))), torch.nn.functional.one_hot(torch.tensor(self.frames2label[self.index2data[index]],dtype=torch.long), num_classes=17)
