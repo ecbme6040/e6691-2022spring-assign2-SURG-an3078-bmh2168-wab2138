@@ -23,7 +23,7 @@ class ImagesDataset(Dataset):
             frames2label = pickle.load(fp)
         self.train_dic={}
         self.val_dic={}
-        self.l=[45, 33, 8, 16, 60, 28, 30, 5, 67, 25, 46, 52, 69, 17, 47, 26, 24, 18, 66, 19]
+        self.l=[45, 33, 8, 16, 60, 28, 30, 5, 67, 25, 46, 52, 69, 17, 47, 26, 24, 18, 66, 19]# validation set list
         for k in frames2label:
             if not int(k[23:k.index('/')]) in self.l:
                 self.train_dic[k]=frames2label[k]
