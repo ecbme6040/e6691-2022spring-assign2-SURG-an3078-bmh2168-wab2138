@@ -19,6 +19,7 @@ class SequenceDataset(Dataset):
         # read with numpy or pandas
         
         #read all images paths,label dic
+        self.train=train
         with open('./pickle/vids2label.p', 'rb') as fp:
             vids2label = pickle.load(fp)
         self.vids2label=vids2label
@@ -49,9 +50,15 @@ class SequenceDataset(Dataset):
     def __getitem__(self, index):
         
         data=self.vids2label[self.index2data[index]]
-        l=500
-        corrupted_data=[label if random.random()>0.3 else random.randint(0, 13) for label in data]
-        s=random.randint(0,max(0,l-501))
+        l=len(data)
+        s=0
+        if self.train:
+            l=len(data)//2
+            s=random.randint(0,l-1)
+            
+        level=random.random()*0.4
+        corrupted_data=[label if random.random()>level else random.randint(0, 13) for label in data]
+        
         data=np.asarray(data[s:s+l])
         corrupted_data=np.asarray(corrupted_data[s:s+l])
     
