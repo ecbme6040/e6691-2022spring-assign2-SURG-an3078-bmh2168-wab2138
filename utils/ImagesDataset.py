@@ -14,7 +14,7 @@ from PIL import Image
 
 class ImagesDataset(Dataset):
     
-    def __init__(self, transform=None,train=True):
+    def __init__(self, transform=None,train=True,noval=False):
         # Initialize data, download, etc.
         # read with numpy or pandas
         
@@ -22,8 +22,11 @@ class ImagesDataset(Dataset):
         with open('./pickle/frames2label.p', 'rb') as fp:
             frames2label = pickle.load(fp)
         self.train_dic={}
+        self.noval=noval
         self.val_dic={}
         self.l=[45, 33, 8, 16, 60, 28, 30, 5, 67, 25, 46, 52, 69, 17, 47, 26, 24, 18, 66, 19]# validation set list
+        if self.noval:
+            self.l=[]
         for k in frames2label:
             if not int(k[23:k.index('/')]) in self.l:
                 self.train_dic[k]=frames2label[k]
