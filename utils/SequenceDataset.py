@@ -12,7 +12,7 @@ import random
 
 # -
 
-#returns sequences for images for CNN-LSTM training
+#returns sequences for images for LSTM error correction training
 class SequenceDataset(Dataset):
     
     def __init__(self, transform=None,train=True):
@@ -57,7 +57,7 @@ class SequenceDataset(Dataset):
             l=len(data)//2
             s=random.randint(0,l-1)
             
-        level=random.random()*0.4
+        level=random.random()*0.3
         corrupted_data=[label if random.random()>level else random.randint(0, 13) for label in data]
         
         data=np.asarray(data[s:s+l])
