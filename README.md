@@ -1,4 +1,5 @@
-# e6691-2022spring-assign2-surg-an3078-bmh2168-wab2138
+# e6691-2022spring-assign2-SURG-an3078-bmh2168-wab2138
+
 
 
 ## Assignment 2 - Surgical Phase Recognition
