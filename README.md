@@ -26,12 +26,12 @@ The ./utils folder contains relevant preprocessing functions to convert videos t
 * kaggle_template.csv
 * README.md
 * utils/
-  * ImagesDataset.py
-  * SequenceDataset.py
+  * ImagesDataset.py <strong><em>Dataset class for the ResNet and EfficientNet models</em></strong>
+  * SequenceDataset.py  <strong><em>Dataset class for the error correcting LSTM network</em></strong>
   * TestImagesDataset.py
-  * VideosDataset.py
-  * image_extraction.py
-  * workers.py
+  * VideosDataset.py <strong><em>Dataset class for the CNN-LSTM model</em></strong>
+  * image_extraction.py <strong><em>code to extract jpeg images from videos</em></strong>
+  * workers.py <strong><em>code to extract jpeg images from videos</em></strong>
 
 **References**
 * Rémi Cadène, Thomas Robert, Nicolas Thome, Matthieu Cord. “M2CAI Workflow Challenge: Convolutional Neural Networks with Time Smoothing and Hidden Markov Model for Video Frames Classification” Sorbonne Universites, UPMC Univ Paris 06, CNRS, LIP6 UMR 7606 (2016). 
