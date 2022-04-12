@@ -8,6 +8,7 @@
 #### About
 Assignment 2 for E6691 Spring 2022. In this assignment we attempt to detect phases of hernia surgeries through videos.
 
+The ./utils folder contains relevant preprocessing functions to convert videos to images, and the implementation of the Dataset classes for the training of the different models.
 #### Saved Model Weights
 * https://drive.google.com/drive/folders/1kmv8pb2Zxfp-Fe-ZMMG4lW9ZxgYFHMqo?usp=sharing
 
