@@ -14,24 +14,23 @@ The ./utils folder contains relevant preprocessing functions to convert videos t
 
 #### Project Structure
 * Setup.ipynb
-* preprocessing.ipynb
-* EfficientNet.ipynb
-* Resnet18_training_result.ipynb
-* LSTM_sequence_cleaning.ipynb
-* Resnet-LSTM.ipynb
-* Predictions.ipynb
-* video.phase.trainingData.clean.StudentVersion.csv
-* all_labels_hernia.csv
-* my_kaggle_preds.csv
-* kaggle_template.csv
+* preprocessing.ipynb <strong><em>Preprocessing the training labels</em></strong>
+* EfficientNet.ipynb <strong><em>Efficientnet Training</em></strong>
+* Resnet18_training_result.ipynb <strong><em>ResNet Training</em></strong>
+* LSTM_sequence_cleaning.ipynb <strong><em>simple sequence to sequence model</em></strong>
+* Resnet-LSTM.ipynb <strong><em>CNN-LSTM implementation</em></strong>
+* Predictions.ipynb <strong><em>Code that predicts on the test data with the CNN and LSTM error correcting models</em></strong>
+* video.phase.trainingData.clean.StudentVersion.csv <strong><em>Cleaned labels for the training data</em></strong>
+* all_labels_hernia.csv <strong><em>List of the classes</em></strong>
+* my_kaggle_preds.csv <strong><em>Test set predictions</em></strong>
+* kaggle_template.csv <strong><em>Template for the test prediction output</em></strong>
 * README.md
 * utils/
   * ImagesDataset.py <strong><em>Dataset class for the ResNet and EfficientNet models</em></strong>
   * SequenceDataset.py  <strong><em>Dataset class for the error correcting LSTM network</em></strong>
-  * TestImagesDataset.py
   * VideosDataset.py <strong><em>Dataset class for the CNN-LSTM model</em></strong>
-  * image_extraction.py <strong><em>code to extract jpeg images from videos</em></strong>
-  * workers.py <strong><em>code to extract jpeg images from videos</em></strong>
+  * image_extraction.py <strong><em>Code to extract jpeg images from videos</em></strong>
+  * workers.py <strong><em>Code to extract jpeg images from videos</em></strong>
 
 **References**
 * Rémi Cadène, Thomas Robert, Nicolas Thome, Matthieu Cord. “M2CAI Workflow Challenge: Convolutional Neural Networks with Time Smoothing and Hidden Markov Model for Video Frames Classification” Sorbonne Universites, UPMC Univ Paris 06, CNRS, LIP6 UMR 7606 (2016). 
