@@ -17,7 +17,7 @@ The ./utils folder contains relevant preprocessing functions to convert videos t
 * preprocessing.ipynb <strong><em>Preprocessing the training labels</em></strong>
 * EfficientNet.ipynb <strong><em>Efficientnet Training</em></strong>
 * Resnet18_training_result.ipynb <strong><em>ResNet Training</em></strong>
-* LSTM_sequence_cleaning.ipynb <strong><em>simple sequence to sequence model</em></strong>
+* LSTM_sequence_cleaning.ipynb <strong><em>Sequence to sequence model fir error correction</em></strong>
 * Resnet-LSTM.ipynb <strong><em>CNN-LSTM implementation</em></strong>
 * Predictions.ipynb <strong><em>Code that predicts on the test data with the CNN and LSTM error correcting models</em></strong>
 * video.phase.trainingData.clean.StudentVersion.csv <strong><em>Cleaned labels for the training data</em></strong>
