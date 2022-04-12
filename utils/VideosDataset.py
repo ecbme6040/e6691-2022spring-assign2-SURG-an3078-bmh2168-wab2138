@@ -10,6 +10,7 @@ from PIL import Image
 
 
 # +
+#returns sequences for images for CNN-LSTM training
 class VideosDataset(Dataset):
     SEQ_LEN=598
     def __init__(self, transform=None):

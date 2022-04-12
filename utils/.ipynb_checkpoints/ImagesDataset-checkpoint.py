@@ -12,6 +12,7 @@ from PIL import Image
 
 # -
 
+# Images dataset for CNN training
 class ImagesDataset(Dataset):
     
     def __init__(self, transform=None,train=True,noval=False):
@@ -24,6 +25,7 @@ class ImagesDataset(Dataset):
         self.train_dic={}
         self.noval=noval
         self.val_dic={}
+        # validation videos
         self.l=[45, 33, 8, 16, 60, 28, 30, 5, 67, 25, 46, 52, 69, 17, 47, 26, 24, 18, 66, 19]# validation set list
         if self.noval:
             self.l=[]

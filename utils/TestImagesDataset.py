@@ -19,6 +19,7 @@ from PIL import Image
 # RALIHR_surgeon03_fps01_0001
 #
 
+# experimental, please ignore
 class TestImagesDataset(Dataset):
     
     def __init__(self, transform=None):

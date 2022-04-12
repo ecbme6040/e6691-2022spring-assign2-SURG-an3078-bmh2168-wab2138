@@ -12,6 +12,7 @@ import random
 
 # -
 
+#returns sequences for images for CNN-LSTM training
 class SequenceDataset(Dataset):
     
     def __init__(self, transform=None,train=True):
