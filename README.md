@@ -7,6 +7,9 @@
 #### About
 Assignment 2 for E6691 Spring 2022. In this assignment we attempt to detect phases of hernia surgeries through videos.
 
+#### Saved Model Weights
+* https://drive.google.com/drive/folders/1kmv8pb2Zxfp-Fe-ZMMG4lW9ZxgYFHMqo?usp=sharing
+
 #### Project Structure
 * Setup.ipynb
 * preprocessing.ipynb
@@ -30,9 +33,6 @@ Assignment 2 for E6691 Spring 2022. In this assignment we attempt to detect phas
   * VideosDataset.py
   * image_extraction.py
   * workers.py
-
-#### Saved Model Weights
-* https://drive.google.com/drive/folders/1kmv8pb2Zxfp-Fe-ZMMG4lW9ZxgYFHMqo?usp=sharing
 
 **References**
 * Rémi Cadène, Thomas Robert, Nicolas Thome, Matthieu Cord. “M2CAI Workflow Challenge: Convolutional Neural Networks with Time Smoothing and Hidden Markov Model for Video Frames Classification” Sorbonne Universites, UPMC Univ Paris 06, CNRS, LIP6 UMR 7606 (2016). 
