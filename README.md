@@ -25,9 +25,6 @@ The ./utils folder contains relevant preprocessing functions to convert videos t
 * my_kaggle_preds.csv
 * kaggle_template.csv
 * README.md
-* .ipynb_checkpoints/
-* __pycache__/
-* pickle/
 * utils/
   * ImagesDataset.py
   * SequenceDataset.py
